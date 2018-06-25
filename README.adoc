@@ -1,0 +1,69 @@
+= Push Notifications addon
+
+This addon adds Push Notifications capabilities to eXo mobile applications.
+
+== Installation
+
+At the root of your eXo Platform distribution, execute:
+
+`./addon install exo-push-notifications`
+
+== Configuration
+
+=== Firebase
+
+This addon relies on Firebase to manage Push Notifications, so you must first create the Firebase project:
+
+* go to the https://console.firebase.google.com/[Firebase console]
+* login with your Google account
+* click on *Add Project*
+* give a name to your project and click on *Create Project*
+
+You should now be redirected to the Firebase console, where you can create Android and iOS apps.
+
+==== Android
+
+In order to push mobile notifications to the eXo Android app, follow these steps:
+
+* click on *Add Firebase to your Android app*
+* set the `Android package name` to `org.exoplatform`, and optionally set an app nickname
+* click on *Register App*
+* click on *Continue*, then *Finish*
+
+==== iOS
+
+TODO
+
+=== API enabling
+
+==== eXo Platform
+
+eXo Platform needs to know which Firebase project to send notifications to and with which credentials:
+
+* in the https://console.firebase.google.com/[Firebase console], go to the Settings of your Android app
+* go to *Service Accounts*
+* click on *Generate New Private Key*
+* save the JSON file in the file gatein/conf/fcm.json of your eXo Platform instance (this is the default
+location for this file, but it can be changed via the parameter `exo.push.fcm.serviceAccountFilePath` in exo.properties)
+
+== Usage
+
+You can now start your eXo Platform instance. Once started:
+
+* login with any user
+* go to your Notifications settings page (User Menu > My Notifications).
+* enable any type of notification you want to receive on your mobile
+
+Once done, login with the eXo mobile application and start using it.
+You should now receive push notifications.
+
+== eXo Platform Compatibility
+
+[caption=""]
+|===
+|Addon Version |eXo Platform Version
+
+|1.0.x
+|4.4.0+
+
+|===
